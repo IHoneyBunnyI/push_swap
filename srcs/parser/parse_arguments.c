@@ -1,5 +1,30 @@
 #include "push_swap.h"
 #include <stdlib.h>
+#include <stdio.h>
+
+static int *sort_array(int *array, int size)
+{
+	int	i;
+	int	j;
+	int	tmp;
+
+	i = -1;
+	j = 0;
+	while (++i < size - 1)
+	{
+		j = i;
+		while (++j < size)
+		{
+			if (array[i] > array[j])
+			{
+				tmp = array[i];
+				array[i] = array[j];
+				array[j] = tmp;
+			}
+		}
+	}
+	return (array);
+}
 
 static int num_array(char **av)
 {
@@ -55,26 +80,42 @@ static int	*convert_numbers_to_array(char **av, int size)
 	return (res);
 }
 
-/*static int	find_duplicates(int *nums)*/
-/*{*/
-	/*(void)nums;*/
-	/*return (0);*/
-/*}*/
+static int	find_duplicates(int *nums, int size)
+{
+	int	*sorted;
+	int	i;
 
-#include <stdio.h>
+	sorted = malloc(sizeof(int) * size);
+	if (!sorted)
+		return (ERROR);
+	i = -1;
+	while (++i < size)
+		sorted[i] = nums[i];
+	sorted = sort_array(sorted, size);
+	i = 0;
+	while (++i < size)
+		if (sorted[i - 1] == sorted[i])
+			return (ERROR);
+	free(sorted);
+	return (0);
+}
+
 t_list *parse_arguments(char **av)
 {
 	/*t_list	*list;*/
 	int		*numbers;
 	int		size;
 
+	/*for (int i = 0; av[i]; i++)*/
+		/*printf("%s\n", av[i]);*/
 	if (check_arguments(av) == ERROR)
 		return ((t_list *)ERROR);
 	size = num_array(av);
 	numbers = convert_numbers_to_array(av, size);
+	if (find_duplicates(numbers, size) == ERROR)
+		return ((t_list *)ERROR);
 	for (int i = 0; i < size; i++)
 		printf("\033[33m%d \033[0m", numbers[i]);
-	/*if (find_duplicates(numbers) == ERROR)*/
-		/*return ((t_list *)ERROR);*/
+	free(numbers);
 	return ((t_list *)0x101010);
 }

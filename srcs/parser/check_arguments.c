@@ -1,11 +1,32 @@
 #include "push_swap.h"
 
+static int num_minus_and_plus(char *str)
+{
+	int	i;
+	int	res;
+
+	i = -1;
+	res = 0;
+	while (str[++i])
+	{
+		if (str[i] == '-')
+			res++;
+		if (str[i] == '+')
+			return (ERROR);
+	}
+	if (res > 1)
+		return (ERROR);
+	return (0);
+}
+
 static int	only_digits_and_minus(char *str)
 {
 	int	i;
 
 	i = 0;
-	if (str[i] == '-' && str[i + 1] == 0)
+	if (num_minus_and_plus(str) == ERROR)
+		return (ERROR);
+	if ((str[0] == '-' && str[i + 1] == 0))
 		return (ERROR);
 	if (str[i] == '-')
 		i++;
@@ -42,11 +63,14 @@ int	check_arguments(char **av)
 	int		j;
 
 	i = 0;
+	split = 0;
 	while (av[++i])
 	{
 		if (find_space(av[i]))
 		{
 			split = ft_split(av[i], ' ');
+			if (!split)
+				return (ERROR);
 			j = -1;
 			while (split[++j])
 				if (check_str(split[j]) == ERROR)

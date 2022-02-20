@@ -67,17 +67,17 @@ char	**ft_split(char const *s, char c)
 {
 	char	**split;
 	int		i;
-	int		j;
 	int		len;
 	int		count;
 
 	if (!s)
 		return (0);
 	count = wcount(s, c);
+	if (count == 0)
+		return (0);
 	if (!(split = malloc(sizeof(char *) * (count + 1))))
 		return (0);
 	i = -1;
-	j = 0;
 	while (++i < count)
 	{
 		while (*s == c && *s != '\0')
