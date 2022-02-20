@@ -3,6 +3,8 @@
 
 # define RED "\033[38;5;1m"
 # define WHITE "\033[0m"
+# define BLUE "\e[38;5;87m"
+# define ORANGE "\e[38;5;208m"
 # define NUMBER_MALLOC 10
 # define ERROR 2
 
@@ -38,5 +40,8 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 t_list	*ft_lstnew(int data);
 int		*sort_array(int *array, int size);
 int		size_list(t_list *l);
+void	sa(t_list *a);
+void	sb(t_list *b);
+void	pb(t_stacks *stacks);
 
 #endif

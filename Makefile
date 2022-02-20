@@ -9,11 +9,13 @@ FILES = main.c\
 		check_arguments.c\
 		lists.c\
 		array_to_list.c\
+		rules.c\
 
 VPATH = srcs/\
 		srcs/utils/\
 		srcs/parser/\
 		srcs/lists/\
+		srcs/rules/\
 
 HEADERS = includes/push_swap.h\
 
