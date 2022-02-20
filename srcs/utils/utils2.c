@@ -5,10 +5,10 @@
 
 int	fatal(char *s)
 {
-	write(1, RED, ft_strlen(RED));
-	write(1, s, ft_strlen(s));
-	write(1, WHITE, ft_strlen(WHITE));
-	write(1, "\n", 1);
+	write(2, RED, ft_strlen(RED));
+	write(2, s, ft_strlen(s));
+	write(2, WHITE, ft_strlen(WHITE));
+	write(2, "\n", 1);
 	return (2);
 }
 
@@ -60,3 +60,17 @@ int	find_space(char *str)
 	return (0);
 }
 
+int	size_list(t_list *l)
+{
+	t_list	*tmp;
+	int		i;
+
+	tmp = l;
+	i = 0;
+	while (tmp)
+	{
+		i++;
+		tmp = tmp->next;
+	}
+	return (i);
+}

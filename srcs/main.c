@@ -1,6 +1,19 @@
 #include "push_swap.h"
 #include <stdio.h>
 
+void	print_list(t_list *list)
+{
+	t_list *tmp;
+
+	tmp = list;
+	while (tmp)
+	{
+		printf("data: %d \tindex: %d\n", tmp->data, tmp->index);
+		tmp = tmp->next;
+	}
+	/*printf("\n");*/
+}
+
 void	init(t_stacks *stacks, t_malloc *malloc)
 {
 	int	i;
@@ -19,13 +32,12 @@ int main(int ac, char **av)
 	t_stacks	stacks;
 	t_malloc	malloc;
 	
-	// в параметрах не должно быть повторений, числа, обработать "1 2 34", если отсортирован ничего не делаю, инт
 	if (ac == 1)
 		return (fatal("Give me numbers, I will sort!"));
 	init(&stacks, &malloc);
 	stacks.a = parse_arguments(av);
 	if (stacks.a == (t_list *)ERROR)
 		return (fatal("Error arguments"));
-	printf("OK PARSER\n");
+	stacks.size = size_list(stacks.a);
 	return 0;
 }

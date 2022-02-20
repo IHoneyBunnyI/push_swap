@@ -8,7 +8,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	if (!lst)
 		return ;
 	plst = *lst;
-	if (!*lst)
+	if (!(*lst))
 	{
 		*lst = new;
 		return ;
@@ -20,7 +20,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	plst->next = new;
 }
 
-t_list	*ft_lstnew(void *data)
+t_list	*ft_lstnew(int data)
 {
 	t_list *new;
 

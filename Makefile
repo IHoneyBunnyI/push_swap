@@ -1,6 +1,6 @@
 NAME = push_swap
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -Iincludes -g #-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -Iincludes -g -fsanitize=address
 
 FILES = main.c\
 		utils.c\
@@ -8,6 +8,7 @@ FILES = main.c\
 		parse_arguments.c\
 		check_arguments.c\
 		lists.c\
+		array_to_list.c\
 
 VPATH = srcs/\
 		srcs/utils/\

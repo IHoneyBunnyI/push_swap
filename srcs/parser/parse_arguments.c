@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-static int *sort_array(int *array, int size)
+int	*sort_array(int *array, int size)
 {
 	int	i;
 	int	j;
@@ -26,7 +26,7 @@ static int *sort_array(int *array, int size)
 	return (array);
 }
 
-static int num_array(char **av)
+static int	num_array(char **av)
 {
 	int		i;
 	char	**split;
@@ -102,20 +102,17 @@ static int	find_duplicates(int *nums, int size)
 
 t_list *parse_arguments(char **av)
 {
-	/*t_list	*list;*/
+	t_list	*list;
 	int		*numbers;
 	int		size;
 
-	/*for (int i = 0; av[i]; i++)*/
-		/*printf("%s\n", av[i]);*/
 	if (check_arguments(av) == ERROR)
 		return ((t_list *)ERROR);
 	size = num_array(av);
 	numbers = convert_numbers_to_array(av, size);
 	if (find_duplicates(numbers, size) == ERROR)
 		return ((t_list *)ERROR);
-	for (int i = 0; i < size; i++)
-		printf("\033[33m%d \033[0m", numbers[i]);
+	list = array_to_list(numbers, size);
 	free(numbers);
-	return ((t_list *)0x101010);
+	return (list);
 }

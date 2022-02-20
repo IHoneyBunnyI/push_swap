@@ -8,7 +8,8 @@
 
 typedef struct s_list
 {
-	void			*data;
+	int	data;
+	int	index;
 	struct s_list	*next;
 }	t_list;
 
@@ -21,6 +22,7 @@ typedef struct s_stacks
 {
 	t_list	*a;
 	t_list	*b;
+	int		size;
 }	t_stacks;
 
 int		ft_strlen(char *s);
@@ -31,5 +33,10 @@ int		check_arguments(char **av);
 void	free_split(char **split);
 int		ft_atoi(char *str);
 int		find_space(char *str);
+t_list	*array_to_list(int *numbers, int size);
+void	ft_lstadd_back(t_list **lst, t_list *new);
+t_list	*ft_lstnew(int data);
+int		*sort_array(int *array, int size);
+int		size_list(t_list *l);
 
 #endif
