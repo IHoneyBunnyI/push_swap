@@ -1,20 +1,12 @@
 #include "push_swap.h"
-static int	find_space(char *str)
-{
-	int	i;
-
-	i = -1;
-	while (str[++i])
-		if (str[i] == ' ')
-			return (1);
-	return (0);
-}
 
 static int	only_digits_and_minus(char *str)
 {
 	int	i;
 
 	i = 0;
+	if (str[i] == '-' && str[i + 1] == 0)
+		return (ERROR);
 	if (str[i] == '-')
 		i++;
 	while (str[++i])
@@ -23,11 +15,22 @@ static int	only_digits_and_minus(char *str)
 	return (0);
 }
 
+static int	convert_num(char *s)
+{
+	if (ft_atoi(s) == ERROR && s[0] == '2' && s[1] != '\0') // MAX INT
+		return (ERROR);
+	else if (ft_atoi(s) == ERROR && s[0] == '-' && s[2] != '\0') // MIN INT
+		return (ERROR);
+	return (0);
+}
+
 static int	check_str(char *str)
 {
 	if (only_digits_and_minus(str) == ERROR)
 		return (ERROR);
 	if (ft_strlen(str) > 11)
+		return (ERROR);
+	if (convert_num(str) == ERROR)
 		return (ERROR);
 	return (0);
 }
@@ -51,10 +54,8 @@ int	check_arguments(char **av)
 			free_split(split);
 		}
 		else
-		{
 			if (check_str(av[i]) == ERROR)
 				return (ERROR);
-		}
 	}
 	return (0);
 }

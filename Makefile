@@ -7,10 +7,12 @@ FILES = main.c\
 		utils2.c\
 		parse_arguments.c\
 		check_arguments.c\
+		lists.c\
 
 VPATH = srcs/\
 		srcs/utils/\
 		srcs/parser/\
+		srcs/lists/\
 
 HEADERS = includes/push_swap.h\
 

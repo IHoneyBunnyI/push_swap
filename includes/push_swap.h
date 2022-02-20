@@ -29,5 +29,7 @@ t_list	*parse_arguments(char **av);
 char	**ft_split(char const *s, char c);
 int		check_arguments(char **av);
 void	free_split(char **split);
-int		convert_numbers(char **av);
+int		ft_atoi(char *str);
+int		find_space(char *str);
+
 #endif
