@@ -3,8 +3,14 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -Iincludes -g -fsanitize=address
 
 FILES = main.c\
+		utils.c\
+		utils2.c\
+		parse_arguments.c\
+		check_arguments.c\
 
 VPATH = srcs/\
+		srcs/utils/\
+		srcs/parser/\
 
 HEADERS = includes/push_swap.h\
 

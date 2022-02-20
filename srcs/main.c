@@ -1,8 +1,31 @@
 #include "push_swap.h"
+#include <stdio.h>
+
+void	init(t_stacks *stacks, t_malloc *malloc)
+{
+	int	i;
+
+	i = -1;
+	stacks->a = 0;
+	stacks->b = 0;
+	while (++i < NUMBER_MALLOC)
+		malloc->memory[i] = 0;
+	malloc->memory[0] = stacks->a;
+	malloc->memory[1] = stacks->b;
+}
 
 int main(int ac, char **av)
 {
-	(void)ac;
-	(void)av;
+	t_stacks	stacks;
+	t_malloc	malloc;
+	
+	// в параметрах не должно быть повторений, числа, обработать "1 2 34", если отсортирован ничего не делаю, инт
+	if (ac == 1)
+		return (fatal("Give me numbers, I will sort!"));
+	init(&stacks, &malloc);
+	stacks.a = parse_arguments(av);
+	if (stacks.a == (t_list *)ERROR)
+		return (fatal("Error arguments"));
+	printf("OK PARSER\n");
 	return 0;
 }
