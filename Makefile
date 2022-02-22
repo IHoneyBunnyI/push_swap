@@ -10,12 +10,14 @@ FILES = main.c\
 		lists.c\
 		array_to_list.c\
 		rules.c\
+		sort3.c\
 
 VPATH = srcs/\
 		srcs/utils/\
 		srcs/parser/\
 		srcs/lists/\
 		srcs/rules/\
+		srcs/sort/\
 
 HEADERS = includes/push_swap.h\
 

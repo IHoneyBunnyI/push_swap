@@ -42,6 +42,21 @@ void	print_lists(t_stacks *stacks)
 	}
 }
 
+int	is_sorted(t_stacks *stacks)
+{
+	t_list *a;
+
+	a = stacks->a;
+	while (a->next)
+	{
+		if (a->index < a->next->index)
+			a = a->next;
+		else
+			return (0);
+	}
+	return (1);
+}
+
 void	init(t_stacks *stacks, t_malloc *malloc)
 {
 	int	i;
@@ -67,9 +82,12 @@ int main(int ac, char **av)
 	if (stacks.a == (t_list *)ERROR)
 		return (fatal("Error arguments"));
 	stacks.size = size_list(stacks.a);
+	if (is_sorted(&stacks))
+		return (fatal("Stack is sorted!"));
 	print_lists(&stacks);
-	/*if (stacks.size <= 3)*/
-		/*sort3(stacks);*/
+	if (stacks.size <= 3)
+		sort3(&stacks);
+	print_lists(&stacks);
 	/*if (stacks.size <= 5)*/
 		/*sort5(stacks);*/
 	/*if (stacks.size <= 100)*/
