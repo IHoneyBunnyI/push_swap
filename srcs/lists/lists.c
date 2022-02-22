@@ -30,3 +30,18 @@ t_list	*ft_lstnew(int data)
 	new->next = NULL;
 	return (new);
 }
+
+void	ft_lstadd_front(t_list **lst, t_list *new)
+{
+	if (!lst)
+		return ;
+	if (!*lst)
+	{
+		*lst = new;
+		return ;
+	}
+	if (!new)
+		return ;
+	new->next = *lst;
+	*lst = new;
+}

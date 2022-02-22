@@ -18,6 +18,7 @@ void	print_lists(t_stacks *stacks)
 {
 	t_list *tmpa;
 	t_list *tmpb;
+	int i;
 
 	tmpa = stacks->a;
 	tmpb = stacks->b;
@@ -25,13 +26,17 @@ void	print_lists(t_stacks *stacks)
 	{
 		if (tmpa)
 		{
-			printf("%sd: %d \ti: %d \t%s", BLUE, tmpa->data, tmpa->index, WHITE);
+			i = printf("%sd: %d \ti: %d \t%s", BLUE, tmpa->data, tmpa->index, WHITE);
 			tmpa = tmpa->next;
 		}
 		if (tmpb)
 		{
-			printf("%sd: %d \t i: %d %s", ORANGE ,tmpb->data,tmpb->index, WHITE);
+			if (i == 0)
+				printf("\t\t%sd: %d \t i: %d %s", ORANGE ,tmpb->data,tmpb->index, WHITE);
+			else
+				printf("%sd: %d \t i: %d %s", ORANGE ,tmpb->data,tmpb->index, WHITE);
 			tmpb = tmpb->next;
+			i = 0;
 		}
 		printf("\n");
 	}
@@ -62,13 +67,7 @@ int main(int ac, char **av)
 	if (stacks.a == (t_list *)ERROR)
 		return (fatal("Error arguments"));
 	stacks.size = size_list(stacks.a);
-	/*print_list("a", stacks.a);*/
-	/*print_list(stacks.b);*/
 	print_lists(&stacks);
-	sa(stacks.a);
-	print_lists(&stacks);
-	/*print_list("a", stacks.a);*/
-	/*print_list("b", stacks.b);*/
 	/*if (stacks.size <= 3)*/
 		/*sort3(stacks);*/
 	/*if (stacks.size <= 5)*/

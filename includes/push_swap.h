@@ -40,8 +40,14 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 t_list	*ft_lstnew(int data);
 int		*sort_array(int *array, int size);
 int		size_list(t_list *l);
-void	sa(t_list *a);
-void	sb(t_list *b);
+void	sa(t_stacks *stacks);
+void	sb(t_stacks *stacks);
 void	pb(t_stacks *stacks);
+void	ft_lstadd_front(t_list **lst, t_list *new);
+void	pa(t_stacks *stacks);
+void	ra(t_stacks *stacks);
+void	rb(t_stacks *stacks);
+void	rra(t_stacks *stacks);
+void	rrb(t_stacks *stacks);
 
 #endif
