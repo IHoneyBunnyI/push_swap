@@ -23,13 +23,17 @@ void	print_lists(t_stacks *stacks)
 	tmpb = stacks->b;
 	while (tmpa || tmpb)
 	{
-		printf("%sd: %d \ti: %d \t%sd: %d \t i: %d %s \n",	BLUE, tmpa ? tmpa->data : 0, tmpa ? tmpa->index : 0, \
-															ORANGE, tmpb ? tmpb->data : 0, tmpb ? tmpb->index : 0, \
-															WHITE);
 		if (tmpa)
+		{
+			printf("%sd: %d \ti: %d \t%s", BLUE, tmpa->data, tmpa->index, WHITE);
 			tmpa = tmpa->next;
+		}
 		if (tmpb)
+		{
+			printf("%sd: %d \t i: %d %s", ORANGE ,tmpb->data,tmpb->index, WHITE);
 			tmpb = tmpb->next;
+		}
+		printf("\n");
 	}
 }
 
