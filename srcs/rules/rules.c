@@ -77,7 +77,6 @@ void	rb(t_stacks *stacks)
 	write(1, "rb\n", 3);
 }
 
-#include <stdio.h>
 void	rra(t_stacks *stacks)
 {
 	t_list	*last;

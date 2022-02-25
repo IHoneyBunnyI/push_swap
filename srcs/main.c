@@ -84,7 +84,7 @@ int main(int ac, char **av)
 	stacks.size = size_list(stacks.a);
 	if (is_sorted(&stacks))
 		return (fatal("Stack is sorted!"));
-	print_lists(&stacks);
+	/*print_lists(&stacks);*/
 	if (stacks.size <= 3)
 		sort3(&stacks);
 	print_lists(&stacks);
@@ -94,5 +94,7 @@ int main(int ac, char **av)
 		/*sort100(stacks);*/
 	/*if (stacks.size <= 500)*/
 		/*sort500(stacks);*/
+	if (is_sorted(&stacks))
+		return (printf("DONE!"));
 	return 0;
 }

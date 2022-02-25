@@ -8,6 +8,7 @@
 # define NUMBER_MALLOC 10
 # define ERROR 2
 
+#define WRITE
 typedef struct s_list
 {
 	int	data;
@@ -39,6 +40,7 @@ t_list	*array_to_list(int *numbers, int size);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 t_list	*ft_lstnew(int data);
 int		*sort_array(int *array, int size);
+void	print_lists(t_stacks *stacks);
 int		size_list(t_list *l);
 void	sa(t_stacks *stacks);
 void	sb(t_stacks *stacks);
