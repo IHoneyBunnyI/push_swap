@@ -2,8 +2,8 @@
 
 int	min_index(t_list *list)
 {
-	int	min;
-	t_list *a;
+	int		min;
+	t_list	*a;
 
 	min = list->i;
 	a = list->n;
@@ -16,10 +16,10 @@ int	min_index(t_list *list)
 	return (min);
 }
 
-int	steps_to_next(t_list *list)
+int	steps_to_next_min(t_list *list)
 {
-	int	i;
-	t_list *a;
+	int		i;
+	t_list	*a;
 
 	a = list;
 	i = 0;
@@ -39,7 +39,7 @@ void	sort5(t_stacks *stacks)
 	{
 		if (stacks->a->i == min_index(stacks->a))
 			pb(stacks);
-		if (steps_to_next(stacks->a) > stacks->size / 2)
+		if (steps_to_next_min(stacks->a) > stacks->size / 2)
 			rra(stacks);
 		else
 			ra(stacks);

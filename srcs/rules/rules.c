@@ -76,6 +76,8 @@ void	rb(t_stacks *stacks)
 {
 	t_list	*elem;
 
+	if (stacks->b == 0)
+		return;
 	elem = stacks->b;
 	stacks->b = stacks->b->n;
 	elem->n = 0;
@@ -104,6 +106,8 @@ void	rrb(t_stacks *stacks)
 {
 	t_list	*last;
 	t_list	*prev_last;
+	if (!stacks->b || !stacks->b->n)
+		return;
 
 	last = stacks->b;
 	prev_last = stacks->b;
