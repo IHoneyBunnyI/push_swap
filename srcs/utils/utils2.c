@@ -70,7 +70,7 @@ int	size_list(t_list *l)
 	while (tmp)
 	{
 		i++;
-		tmp = tmp->next;
+		tmp = tmp->n;
 	}
 	return (i);
 }

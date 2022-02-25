@@ -8,8 +8,8 @@ void	print_list(t_list *list)
 	tmp = list;
 	while (tmp)
 	{
-		printf("data: %d \tindex: %d\n", tmp->data, tmp->index);
-		tmp = tmp->next;
+		printf("data: %d \ti: %d\n", tmp->data, tmp->i);
+		tmp = tmp->n;
 	}
 	/*printf("\n");*/
 }
@@ -26,16 +26,16 @@ void	print_lists(t_stacks *stacks)
 	{
 		if (tmpa)
 		{
-			i = printf("%sd: %d \ti: %d \t%s", BLUE, tmpa->data, tmpa->index, WHITE);
-			tmpa = tmpa->next;
+			i = printf("%sd: %d \ti: %d \t%s", BLUE, tmpa->data, tmpa->i, WHITE);
+			tmpa = tmpa->n;
 		}
 		if (tmpb)
 		{
 			if (i == 0)
-				printf("\t\t%sd: %d \t i: %d %s", ORANGE ,tmpb->data,tmpb->index, WHITE);
+				printf("\t\t%sd: %d \t i: %d %s", ORANGE ,tmpb->data,tmpb->i, WHITE);
 			else
-				printf("%sd: %d \t i: %d %s", ORANGE ,tmpb->data,tmpb->index, WHITE);
-			tmpb = tmpb->next;
+				printf("%sd: %d \t i: %d %s", ORANGE ,tmpb->data,tmpb->i, WHITE);
+			tmpb = tmpb->n;
 			i = 0;
 		}
 		printf("\n");
@@ -47,10 +47,10 @@ int	is_sorted(t_stacks *stacks)
 	t_list *a;
 
 	a = stacks->a;
-	while (a->next)
+	while (a->n)
 	{
-		if (a->index < a->next->index)
-			a = a->next;
+		if (a->i < a->n->i)
+			a = a->n;
 		else
 			return (0);
 	}

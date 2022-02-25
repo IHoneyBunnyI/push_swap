@@ -34,8 +34,8 @@ t_list *array_to_list(int *numbers, int size)
 	tmp = res;
 	while (++i < size)
 	{
-		tmp->index = get_index(sorted, size, tmp->data);
-		tmp = tmp->next;
+		tmp->i = get_index(sorted, size, tmp->data);
+		tmp = tmp->n;
 	}
 	free(sorted);
 	return (res);

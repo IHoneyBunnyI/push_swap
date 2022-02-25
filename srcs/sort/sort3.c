@@ -2,44 +2,28 @@
 
 void	sort3(t_stacks *stacks)
 {
-	int i1;
-	int i2;
-	int i3;
+	t_list *a;
 
-	i1 = stacks->a->index;
-	i2 = stacks->a->next->index;
-	i3 = -1;
-	if (stacks->size == 3)
-		i3 = stacks->a->next->next->index;
-	if (i1 > i2 && stacks->size == 2)
+	a = stacks->a;
+	if (a->i > a->n->i && stacks->size == 2)
 		return (sa(stacks));
-	if (i1 < i2 && i1 < i3 && i2 > i3)
+	if (a->i < a->n->i && a->i < a->n->n->i && a->n->i > a->n->n->i)
 	{
 		sa(stacks);
 		return (ra(stacks));
 	}
-	if (i1 > i2 && i1 < i3 && i2 < i3)
+	if (a->i > a->n->i && a->i < a->n->n->i && a->n->i < a->n->n->i)
 		return (sa(stacks));
-	if (i1 < i2 && i1 > i3 && i2 > i1)
+	if (a->i < a->n->i && a->i > a->n->n->i && a->n->i > a->i)
 	{
 		ra(stacks);
 		return (ra(stacks));
 	}
-	if (i1 > i2 && i1 > i3 && i2 < i3)
+	if (a->i > a->n->i && a->i > a->n->n->i && a->n->i < a->n->n->i)
 		return (ra(stacks));
-	if (i1 > i2 && i1 > i3 && i2 > i3)
+	if (a->i > a->n->i && a->i > a->n->n->i && a->n->i > a->n->n->i)
 	{
 		ra(stacks);
 		return (sa(stacks));
 	}
 }
-
-// 2 1 sa
-// 1 3 2 sa ra
-// 2 1 3 sa
-//
-// 2 3 1 ra ra
-//
-// 3 1 2 ra
-// 3 2 1 ra sa
-//

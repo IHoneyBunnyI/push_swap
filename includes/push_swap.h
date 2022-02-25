@@ -12,8 +12,8 @@
 typedef struct s_list
 {
 	int	data;
-	int	index;
-	struct s_list	*next;
+	int	i;
+	struct s_list	*n;
 }	t_list;
 
 typedef struct s_malloc
