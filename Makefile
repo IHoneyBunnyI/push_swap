@@ -11,6 +11,7 @@ FILES = main.c\
 		array_to_list.c\
 		rules.c\
 		sort3.c\
+		sort5.c\
 
 VPATH = srcs/\
 		srcs/utils/\

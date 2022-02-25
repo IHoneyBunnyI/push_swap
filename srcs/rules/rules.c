@@ -23,6 +23,8 @@ void	sb(t_stacks *stacks)
 	int		tmp_data;;
 	t_list	*tmp;
 
+	if (stacks->b == 0)
+		return ;
 	tmp_i = stacks->b->i;
 	tmp_data = stacks->b->data;
 	tmp = stacks->b->n;
@@ -37,6 +39,8 @@ void	pb(t_stacks *stacks)
 {
 	t_list	*elem;
 
+	if (stacks->a == 0)
+		return ;
 	elem = stacks->a;
 	stacks->a = stacks->a->n;
 	elem->n = 0;
@@ -48,6 +52,8 @@ void	pa(t_stacks *stacks)
 {
 	t_list	*elem;
 
+	if (stacks->b == 0)
+		return ;
 	elem = stacks->b;
 	stacks->b = stacks->b->n;
 	elem->n = 0;

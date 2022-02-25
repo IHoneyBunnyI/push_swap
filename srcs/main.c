@@ -26,19 +26,19 @@ void	print_lists(t_stacks *stacks)
 	{
 		if (tmpa)
 		{
-			i = printf("%sd: %d \ti: %d \t%s", BLUE, tmpa->data, tmpa->i, WHITE);
+			i = dprintf(2, "%sd: %d \ti: %d \t%s", BLUE, tmpa->data, tmpa->i, WHITE);
 			tmpa = tmpa->n;
 		}
 		if (tmpb)
 		{
 			if (i == 0)
-				printf("\t\t%sd: %d \t i: %d %s", ORANGE ,tmpb->data,tmpb->i, WHITE);
+				dprintf(2, "\t\t%sd: %d \t i: %d %s", ORANGE ,tmpb->data,tmpb->i, WHITE);
 			else
-				printf("%sd: %d \t i: %d %s", ORANGE ,tmpb->data,tmpb->i, WHITE);
+				dprintf(2, "%sd: %d \t i: %d %s", ORANGE ,tmpb->data,tmpb->i, WHITE);
 			tmpb = tmpb->n;
 			i = 0;
 		}
-		printf("\n");
+		dprintf(2, "\n");
 	}
 }
 
@@ -47,6 +47,8 @@ int	is_sorted(t_stacks *stacks)
 	t_list *a;
 
 	a = stacks->a;
+	if (size_list(stacks->a) != stacks->size)
+		return (0);
 	while (a->n)
 	{
 		if (a->i < a->n->i)
@@ -87,14 +89,16 @@ int main(int ac, char **av)
 	/*print_lists(&stacks);*/
 	if (stacks.size <= 3)
 		sort3(&stacks);
+	if (stacks.size > 3 && stacks.size <= 5)
+		sort5(&stacks);
 	print_lists(&stacks);
-	/*if (stacks.size <= 5)*/
-		/*sort5(stacks);*/
 	/*if (stacks.size <= 100)*/
 		/*sort100(stacks);*/
 	/*if (stacks.size <= 500)*/
 		/*sort500(stacks);*/
 	if (is_sorted(&stacks))
-		return (printf("DONE!"));
+		return (dprintf(2, "DONE!"));
+	else 
+		return (dprintf(2, "FAIL!"));
 	return 0;
 }
