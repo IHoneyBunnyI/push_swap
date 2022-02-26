@@ -14,14 +14,17 @@ FILES = main.c\
 		array_to_list.c\
 		rules.c\
 		rules2.c\
+		rules3.c\
 		sort3.c\
 		sort5.c\
 		sort100.c\
 		sort500.c\
 
 FILES_BONUS = bonus.c\
+			  util_bonus.c\
 			  rules.c\
 			  rules2.c\
+			  rules3.c\
 			  utils2.c\
 			  utils.c\
 			  parse_arguments.c\
@@ -78,11 +81,13 @@ $(NAME_BONUS) : $(OBJS_BONUS)
 
 clean:
 	@rm -rf $(OBJS)
+	@rm -rf $(OBJS_BONUS)
 	@rm -rf $(OBJDIR)
 	@printf "\033[38;5;85mCLEAN\033[0m\n"
 
 fclean : clean
 	@rm -rf $(NAME)
+	@rm -rf $(NAME_BONUS)
 	@printf "\033[38;5;84mFULL CLEAN\033[0m\n"
 
 re: fclean all
