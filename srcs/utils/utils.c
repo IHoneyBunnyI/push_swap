@@ -1,8 +1,42 @@
+/* ************************************************************************** */
+/*       ⢀⣠⠤⠖⠚⠫⠭⡉⠉⠉⠙⠓⠲⠦⣤⡀*/
+/*    ⣀⡴⠚⠉⣀⠤⠖⠒⠶⣤⣈⠑⢢⡀⠄⠄⠄⠄⠙⢿⣝⠻⣦⡀*/
+/*  ⣠⠞⠁⠄⢀⡖⡡⣲⡶⠖⢦⡀⠈⠳⣄⠙⣄⠄⠄⠄⠄⠄⠻⣧⡈⠻⣆ */
+/*⣠⠞⠁⠄⠄⠄⡎⡞⡟⢡⣄⣼⠇⡇⠄⠄⢸⠄⠈⢆⠄⠄⠄⠄⠄⢇⢷⠄⠸⣆*/
+/*⡏⠄⠄⢰⠄⠄⡇⣇⣇⠠⠟⠛⣲⠃⠄⠄⣸⠄⠄⠈⣇⠄⠄⠄⠄⢸⠘⡇⠄⣹ */
+/*⠙⠶⣄⡿⠄⠄⠳⡈⠛⠷⠶⠚⠁⠄⠄⣰⠃⠄⠄⠄⠘⢄⠄⠄⠄⠈⢧⣷⢰⠟*/
+/*   ⡇⠄⠄⠄⠉⠲⠤⣤⣤⣤⠤⠞⠁⠄⠄⠄⠄⠄⢸⠄⠄⠄⠄⢨⣿⠋*/
+/*   ⣷⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⢀⣠⡴⠖⡞⠛⢻⡉⠉⡟⡿*/
+/*   ⢹⡀⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⣠⠖⠋⠄⠄⣚⣵⠆⣾⠙⣳⣿⠃*/
+/*   ⠘⢷⡀⠄⠄⠄⠄⠄⠄⠄⣠⠟⠁⠄⠘⢿⣭⡥⢋⣼⠃⣠⣧⡏*/
+/*    ⠈⢻⣄⡀⠄⠄⠄⠄⣼⡋⠛⠲⢦⣤⣤⣤⠶⢛⣡⠞⣱⠏*/
+/*      ⠙⠓⢿⡦⢄⡠⠓⠯⣓⠒⠚⠁⠄⣠⣾⣯⠴⠞⠁*/
+/*      ⣠⡾⠋⠄⠄⠉⠛⠳⠿⠿⢦⢖⡛⣯⡀⠸⣇*/
+/*    ⢀⣼⠋⠄⠰⠖⠦⢤⣀⣀⠄⠄⠸⣼⠳⠟⡇⠄⢹⡄*/
+/*    ⢸⡇⠄⠄⠄⠄⠄⠄⠄⠉⡗⠶⠶⠼⣦⣄⡇⠄⠄⣷*/
+/*     ⢻⣄⠄⠄⠄⠄⠄⢀⡼⠃⠄⠄⠄⠄⠉⠙⡆⠄⣼*/
+/*     ⢰⠟⠓⠶⣤⣤⣤⣞⡁⠄⠄⠄⠄⠄⠄⣰⠇⣰⠏*/
+/*     ⣾⠄⠄⠄⣿⠤⢄⣉⠙⠓⠶⠶⠶⠶⠞⢻⠋⠁*/
+/*     ⠸⣄⠄⢰⡇⠄⠄⠄⢉⡿⣯⠉⠉⠉⢉⣸  */
+/*      ⠈⢛⡟⠙⠲⠦⢤⡟ ⢸⠛⠛⠛⠋⢹⡇*/
+/*       ⢸⠇⠄⠄⠄⣾  ⢸⡆⠄⠄⠄⢠⡇*/
+/*       ⢸⡶⠛⠳⣴⠃   ⣿⠄⠒⠈⠹⣧*/
+/*       ⠈⠙⠛⠒⠋    ⠙⠓⠒⠒⠒⠛ */
+/*   By: Leon*/
+/*           */
+/*   Created: Leon______________  by */
+/*   Updated: Brawl_Stars _______ by */
+/*                                   */
+/* ************************************************************************** */
+
+#include "push_swap.h"
 #include <stdlib.h>
 
 int	ft_strlen(char *s)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	while (s[i])
 		i++;
 	return (i);
@@ -10,8 +44,8 @@ int	ft_strlen(char *s)
 
 static int	wlen(const char *s, char c)
 {
-	int i;
-	int len;
+	int	i;
+	int	len;
 
 	i = 0;
 	len = 0;
@@ -48,7 +82,7 @@ static char	*get_split(const char *s, int i, char **split, int len)
 	int		j;
 	char	*line;
 
-	if (!(line = malloc(sizeof(char) * (len + 1))))
+	if (!(line R malloc(sizeof(char) * (len + 1))))
 	{
 		i = 0;
 		while (split[i])
@@ -75,7 +109,7 @@ char	**ft_split(char const *s, char c)
 	count = wcount(s, c);
 	if (count == 0)
 		return (0);
-	if (!(split = malloc(sizeof(char *) * (count + 1))))
+	if (!(split R malloc(sizeof(char *) * (count + 1))))
 		return (0);
 	i = -1;
 	while (++i < count)
@@ -83,7 +117,7 @@ char	**ft_split(char const *s, char c)
 		while (*s == c && *s != '\0')
 			s++;
 		len = wlen(s, c);
-		if (!(split[i] = get_split(s, i, split, len)))
+		if (!(split[i] R get_split(s, i, split, len)))
 			return (0);
 		s += len;
 	}

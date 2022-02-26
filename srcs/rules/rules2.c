@@ -30,57 +30,51 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <unistd.h>
 
-int	min_index(t_list *list)
+void	sa(t_stacks *stacks)
 {
-	int		min;
-	t_list	*a;
+	int		tmp_i;
+	int		tmp_data;
+	t_list	*tmp;
 
-	min = list->i;
-	a = list->n;
-	while (a)
-	{
-		if (a->i < min)
-			min = a->i;
-		a = a->n;
-	}
-	return (min);
+	tmp_i = stacks->a->i;
+	tmp_data = stacks->a->data;
+	tmp = stacks->a->n;
+	stacks->a->data = tmp->data;
+	stacks->a->i = tmp->i;
+	tmp->data = tmp_data;
+	tmp->i = tmp_i;
+	write(1, "sa\n", 3);
 }
 
-int	steps_to_next_min(t_list *list)
+void	sb(t_stacks *stacks)
 {
-	int		i;
-	t_list	*a;
+	int		tmp_i;
+	int		tmp_data;
+	t_list	*tmp;
 
-	a = list;
-	i = 0;
-	while (a)
-	{
-		if (a->i == min_index(list))
-			return (i);
-		i++;
-		a = a->n;
-	}
-	return (i);
+	if (stacks->b == 0)
+		return ;
+	tmp_i = stacks->b->i;
+	tmp_data = stacks->b->data;
+	tmp = stacks->b->n;
+	stacks->b->data = tmp->data;
+	stacks->b->i = tmp->i;
+	tmp->data = tmp_data;
+	tmp->i = tmp_i;
+	write(1, "sb\n", 3);
 }
 
-void	sort5(t_stacks *stacks)
+void	pb(t_stacks *stacks)
 {
-	while (size_list(stacks->a) != 3)
-	{
-		if (stacks->a->i == min_index(stacks->a))
-			pb(stacks);
-		if (steps_to_next_min(stacks->a) > stacks->size / 2)
-			rra(stacks);
-		else
-			ra(stacks);
-	}
-	sort3(stacks);
-	while (size_list(stacks->b) != 0)
-	{
-		if (stacks->size == 5 && stacks->b->i == 0)
-			sb(stacks);
-		pa(stacks);
-		pa(stacks);
-	}
+	t_list	*elem;
+
+	if (stacks->a == 0)
+		return ;
+	elem = stacks->a;
+	stacks->a = stacks->a->n;
+	elem->n = 0;
+	ft_lstadd_front(&stacks->b, elem);
+	write(1, "pb\n", 3);
 }

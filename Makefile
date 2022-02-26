@@ -1,4 +1,7 @@
 NAME = push_swap
+NAME_BONUS = checker
+
+OBJDIR = objs/
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -Iincludes -g -fsanitize=address
 
@@ -10,10 +13,14 @@ FILES = main.c\
 		lists.c\
 		array_to_list.c\
 		rules.c\
+		rules2.c\
 		sort3.c\
 		sort5.c\
 		sort100.c\
 		sort500.c\
+
+FILES_BONUS = bonus.c\
+
 
 VPATH = srcs/\
 		srcs/utils/\
@@ -21,13 +28,16 @@ VPATH = srcs/\
 		srcs/lists/\
 		srcs/rules/\
 		srcs/sort/\
+		srcs/bonus/\
 
 HEADERS = includes/push_swap.h\
+		  includes/checker.h\
 
 FILES_O = $(addprefix objs/, $(notdir $(FILES)))
-SRCS = $(addprefix srcs/, $(FILES))
+FILES_O_BONUS = $(addprefix objs/, $(notdir $(FILES_BONUS)))
+
 OBJS = $(FILES_O:.c=.o)
-OBJDIR = objs/
+OBJS_BONUS = $(FILES_O_BONUS:.c=.o)
 
 NB = $(words $(FILES))
 INDEX = 0
@@ -41,12 +51,18 @@ objs/%.o : %.c Makefile $(HEADERS)
 
 all: $(OBJDIR) $(NAME)
 
+bonus: $(OBJDIR) $(NAME_BONUS)
+
 $(OBJDIR):
 	@mkdir objs/
 
 $(NAME) : $(OBJS)
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 	@printf "\r\033[38;5;82mPUSH SWAP DONE\033[0m\033[K\n"
+
+$(NAME_BONUS) : $(OBJS_BONUS)
+	@$(CC) $(CFLAGS) -o $(NAME_BONUS) $(OBJS_BONUS)
+	@printf "\r\033[38;5;82mCHECKER DONE\033[0m\033[K\n"
 
 clean:
 	@rm -rf $(OBJS)
