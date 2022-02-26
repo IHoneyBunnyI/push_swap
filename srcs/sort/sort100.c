@@ -69,11 +69,11 @@ void	sort_a_from_b(t_stacks *stacks)
 	while (size_list(stacks->b) != 0)
 	{
 		if (stacks->b->i == max_index(stacks->b))
-			pa(stacks);
+			pa(stacks, 1);
 		if (steps_to_next_max(stacks->b) > (size_list(stacks->b) / 2))
-			rrb(stacks);
+			rrb(stacks, 1);
 		else
-			rb(stacks);
+			rb(stacks, 1);
 	}
 }
 
@@ -86,17 +86,17 @@ void	sort_more(t_stacks *stacks, int interval)
 	{
 		if (stacks->a->i <= interval_start && interval_start > 1)
 		{
-			pb(stacks);
-			rb(stacks);
+			pb(stacks, 1);
+			rb(stacks, 1);
 			interval_start++;
 		}
 		else if (stacks->a->i <= interval_start + interval)
 		{
-			pb(stacks);
+			pb(stacks, 1);
 			interval_start++;
 		}
 		else if (stacks->a->i > interval_start)
-			ra(stacks);
+			ra(stacks, 1);
 	}
 	sort_a_from_b(stacks);
 }

@@ -69,18 +69,18 @@ void	sort5(t_stacks *stacks)
 	while (size_list(stacks->a) != 3)
 	{
 		if (stacks->a->i == min_index(stacks->a))
-			pb(stacks);
+			pb(stacks, 1);
 		if (steps_to_next_min(stacks->a) > stacks->size / 2)
-			rra(stacks);
+			rra(stacks, 1);
 		else
-			ra(stacks);
+			ra(stacks, 1);
 	}
 	sort3(stacks);
 	while (size_list(stacks->b) != 0)
 	{
 		if (stacks->size == 5 && stacks->b->i == 0)
-			sb(stacks);
-		pa(stacks);
-		pa(stacks);
+			sb(stacks, 1);
+		pa(stacks, 1);
+		pa(stacks, 1);
 	}
 }

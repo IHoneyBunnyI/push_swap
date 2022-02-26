@@ -32,7 +32,7 @@
 #include "push_swap.h"
 #include <unistd.h>
 
-void	sa(t_stacks *stacks)
+void	sa(t_stacks *stacks, int w)
 {
 	int		tmp_i;
 	int		tmp_data;
@@ -45,10 +45,11 @@ void	sa(t_stacks *stacks)
 	stacks->a->i = tmp->i;
 	tmp->data = tmp_data;
 	tmp->i = tmp_i;
-	write(1, "sa\n", 3);
+	if (w)
+		write(1, "sa\n", 3);
 }
 
-void	sb(t_stacks *stacks)
+void	sb(t_stacks *stacks, int w)
 {
 	int		tmp_i;
 	int		tmp_data;
@@ -63,10 +64,11 @@ void	sb(t_stacks *stacks)
 	stacks->b->i = tmp->i;
 	tmp->data = tmp_data;
 	tmp->i = tmp_i;
-	write(1, "sb\n", 3);
+	if (w)
+		write(1, "sb\n", 3);
 }
 
-void	pb(t_stacks *stacks)
+void	pb(t_stacks *stacks, int w)
 {
 	t_list	*elem;
 
@@ -76,5 +78,6 @@ void	pb(t_stacks *stacks)
 	stacks->a = stacks->a->n;
 	elem->n = 0;
 	ft_lstadd_front(&stacks->b, elem);
-	write(1, "pb\n", 3);
+	if (w)
+		write(1, "pb\n", 3);
 }

@@ -28,6 +28,8 @@ FILES_BONUS = bonus.c\
 			  array_to_list.c\
 			  check_arguments.c\
 			  lists.c\
+			  gnl.c\
+			  gnl_utils.c\
 
 
 VPATH = srcs/\
@@ -37,9 +39,11 @@ VPATH = srcs/\
 		srcs/rules/\
 		srcs/sort/\
 		srcs/bonus/\
+		srcs/bonus/gnl\
 
 HEADERS = includes/push_swap.h\
 		  includes/checker.h\
+		  includes/gnl.h\
 
 FILES_O = $(addprefix objs/, $(notdir $(FILES)))
 FILES_O_BONUS = $(addprefix objs/, $(notdir $(FILES_BONUS)))

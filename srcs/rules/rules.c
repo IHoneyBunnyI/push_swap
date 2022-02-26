@@ -32,7 +32,7 @@
 #include "push_swap.h"
 #include <unistd.h>
 
-void	pa(t_stacks *stacks)
+void	pa(t_stacks *stacks, int w)
 {
 	t_list	*elem;
 
@@ -42,10 +42,11 @@ void	pa(t_stacks *stacks)
 	stacks->b = stacks->b->n;
 	elem->n = 0;
 	ft_lstadd_front(&stacks->a, elem);
-	write(1, "pa\n", 3);
+	if (w)
+		write(1, "pa\n", 3);
 }
 
-void	ra(t_stacks *stacks)
+void	ra(t_stacks *stacks, int w)
 {
 	t_list	*elem;
 
@@ -53,10 +54,11 @@ void	ra(t_stacks *stacks)
 	stacks->a = stacks->a->n;
 	elem->n = 0;
 	ft_lstadd_back(&stacks->a, elem);
-	write(1, "ra\n", 3);
+	if (w)
+		write(1, "ra\n", 3);
 }
 
-void	rb(t_stacks *stacks)
+void	rb(t_stacks *stacks, int w)
 {
 	t_list	*elem;
 
@@ -66,10 +68,11 @@ void	rb(t_stacks *stacks)
 	stacks->b = stacks->b->n;
 	elem->n = 0;
 	ft_lstadd_back(&stacks->b, elem);
-	write(1, "rb\n", 3);
+	if (w)
+		write(1, "rb\n", 3);
 }
 
-void	rra(t_stacks *stacks)
+void	rra(t_stacks *stacks, int w)
 {
 	t_list	*last;
 	t_list	*prev_last;
@@ -83,10 +86,11 @@ void	rra(t_stacks *stacks)
 	prev_last->n = 0;
 	last->n = stacks->a;
 	stacks->a = last;
-	write(1, "rra\n", 4);
+	if (w)
+		write(1, "rra\n", 4);
 }
 
-void	rrb(t_stacks *stacks)
+void	rrb(t_stacks *stacks, int w)
 {
 	t_list	*last;
 	t_list	*prev_last;
@@ -102,5 +106,6 @@ void	rrb(t_stacks *stacks)
 	prev_last->n = 0;
 	last->n = stacks->b;
 	stacks->b = last;
-	write(1, "rrb\n", 4);
+	if (w)
+		write(1, "rrb\n", 4);
 }

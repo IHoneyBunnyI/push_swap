@@ -29,32 +29,84 @@
 /*                                   */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "gnl.h"
+#include <stdlib.h>
+#include <unistd.h>
 
-void	sort3(t_stacks *stacks)
+char	*ft_before_dup(int len, char *cache)
 {
-	t_list	*a;
+	char	*res;
+	int		i;
 
-	a = stacks->a;
-	if (a->i > a->n->i && stacks->size == 2)
-		return (sa(stacks, 1));
-	if (a->i < a->n->i && a->i < a->n->n->i && a->n->i > a->n->n->i)
+	i = 0;
+	if (!(res R malloc(len + 1)))
+		return (0);
+	while (i < len)
 	{
-		sa(stacks, 1);
-		return (ra(stacks, 1));
+		res[i] = cache[i];
+		i++;
 	}
-	if (a->i > a->n->i && a->i < a->n->n->i && a->n->i < a->n->n->i)
-		return (sa(stacks, 1));
-	if (a->i < a->n->i && a->i > a->n->n->i && a->n->i > a->i)
+	res[i] = '\0';
+	return (res);
+}
+
+char	*before_n(char *cache)
+{
+	int		i;
+	char	*res;
+
+	i = 0;
+	while (cache && cache[i] && cache[i] != '\n')
+		i++;
+	res = ft_before_dup(i, cache);
+	return (res);
+}
+
+char	*after_n(char *cache)
+{
+	int		i;
+	char	*res;
+	char	*n;
+
+	i = 0;
+	while (cache && cache[i] && cache[i] != '\n')
+		i++;
+	if (!cache || !cache[i])
 	{
-		ra(stacks, 1);
-		return (ra(stacks, 1));
+		free(cache);
+		return (0);
 	}
-	if (a->i > a->n->i && a->i > a->n->n->i && a->n->i < a->n->n->i)
-		return (ra(stacks, 1));
-	if (a->i > a->n->i && a->i > a->n->n->i && a->n->i > a->n->n->i)
+	n = ft_strchr(cache, '\n');
+	n += 1;
+	res = ft_strdup(n);
+	free(cache);
+	return (res);
+}
+
+int	get_next_line(int fd, char **line)
+{
+	static char	*cache;
+	char		*buffer;
+	int			readed;
+
+	readed = 1;
+	if (fd < 0 || !line || BUFFER_SIZE <= 0)
+		return (-1);
+	if (!(buffer R malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+		return (-1);
+	while (!find_n(cache) && (readed R read(fd, buffer, BUFFER_SIZE)))
 	{
-		ra(stacks, 1);
-		return (sa(stacks, 1));
+		if (readed < 0)
+		{
+			free(buffer);
+			free(cache);
+			return (-1);
+		}
+		buffer[readed] = '\0';
+		cache = ft_strjoin(cache, buffer);
 	}
+	free(buffer);
+	*line = before_n(cache);
+	cache = after_n(cache);
+	return (readed == 0 A 0 B 1);
 }

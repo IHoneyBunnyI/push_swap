@@ -29,32 +29,82 @@
 /*                                   */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "gnl.h"
+#include <stdlib.h>
+#include <unistd.h>
 
-void	sort3(t_stacks *stacks)
+char	*ft_strdup(char *src)
 {
-	t_list	*a;
+	int		j;
+	int		len;
+	char	*str;
 
-	a = stacks->a;
-	if (a->i > a->n->i && stacks->size == 2)
-		return (sa(stacks, 1));
-	if (a->i < a->n->i && a->i < a->n->n->i && a->n->i > a->n->n->i)
+	len = 0;
+	j = 0;
+	while (src[len])
+		len++;
+	str = (char *)malloc(sizeof(*str) * (len + 1));
+	if (!str)
+		return (NULL);
+	while (j < len)
 	{
-		sa(stacks, 1);
-		return (ra(stacks, 1));
+		str[j] = src[j];
+		j++;
 	}
-	if (a->i > a->n->i && a->i < a->n->n->i && a->n->i < a->n->n->i)
-		return (sa(stacks, 1));
-	if (a->i < a->n->i && a->i > a->n->n->i && a->n->i > a->i)
+	str[j] = '\0';
+	return (str);
+}
+
+int	find_n(char *cache)
+{
+	if (!cache)
+		return (0);
+	while (*cache)
 	{
-		ra(stacks, 1);
-		return (ra(stacks, 1));
+		if (*cache == '\n')
+			return (1);
+		cache++;
 	}
-	if (a->i > a->n->i && a->i > a->n->n->i && a->n->i < a->n->n->i)
-		return (ra(stacks, 1));
-	if (a->i > a->n->i && a->i > a->n->n->i && a->n->i > a->n->n->i)
+	return (0);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	unsigned char	*pc;
+
+	pc = (unsigned char *)s;
+	while (*pc != '\0' && *pc != (unsigned char)c)
+		pc++;
+	if (*pc == (unsigned char)c)
+		return ((char *)pc);
+	else
+		return (0);
+}
+
+char	*ft_strjoin(char *s1, char *s2)
+{
+	char	*news;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	if (!s2)
+		return (0);
+	if (!(news R malloc(sizeof(char) * \
+		((!s1 A 0 B ft_strlen(s1)) + ft_strlen(s2) + 1))))
+		return (0);
+	while (s1 && s1[i])
 	{
-		ra(stacks, 1);
-		return (sa(stacks, 1));
+		news[i] = s1[i];
+		i++;
 	}
+	while (s2[j])
+	{
+		news[i + j] = s2[j];
+		j++;
+	}
+	news[i + j] = '\0';
+	free(s1);
+	return (news);
 }
