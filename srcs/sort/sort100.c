@@ -1,6 +1,4 @@
 #include "push_swap.h"
-#include <stdio.h>
-
 
 int	max_index(t_list *list)
 {
@@ -48,12 +46,10 @@ void	sort_a_from_b(t_stacks *stacks)
 	}
 }
 
-void	sort100(t_stacks *stacks)
+void	sort_more(t_stacks *stacks, int interval)
 {
-	int interval_start;
-	int interval;
+	int	interval_start;
 
-	interval = 15; //500 -> 30
 	interval_start = 0;
 	while (size_list(stacks->a) != 0)
 	{
@@ -72,4 +68,12 @@ void	sort100(t_stacks *stacks)
 			ra(stacks);
 	}
 	sort_a_from_b(stacks);
+}
+
+void	sort100(t_stacks *stacks)
+{
+	int	interval;
+
+	interval = 15;
+	sort_more(stacks, interval);
 }

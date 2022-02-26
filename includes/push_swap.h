@@ -51,8 +51,10 @@ void	ra(t_stacks *stacks);
 void	rb(t_stacks *stacks);
 void	rra(t_stacks *stacks);
 void	rrb(t_stacks *stacks);
+void	sort_more(t_stacks *stacks, int interval);
 void	sort3(t_stacks *stacks);
 void	sort5(t_stacks *stacks);
 void	sort100(t_stacks *stacks);
+void	sort500(t_stacks *stacks);
 
 #endif

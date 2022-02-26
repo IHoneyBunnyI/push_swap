@@ -86,19 +86,13 @@ int main(int ac, char **av)
 	stacks.size = size_list(stacks.a);
 	if (is_sorted(&stacks))
 		return (fatal("Stack is sorted!"));
-	/*print_lists(&stacks);*/
 	if (stacks.size <= 3)
 		sort3(&stacks);
 	if (stacks.size > 3 && stacks.size <= 5)
 		sort5(&stacks);
 	if (stacks.size > 5 && stacks.size <= 100)
 		sort100(&stacks);
-	/*print_lists(&stacks);*/
-	/*if (stacks.size <= 500)*/
-		/*sort500(stacks);*/
-	/*if (is_sorted(&stacks))*/
-		/*return (dprintf(2, "DONE!"));*/
-	/*else */
-		/*return (dprintf(2, "FAIL!"));*/
+	if (stacks.size > 100)
+		sort500(&stacks);
 	return 0;
 }

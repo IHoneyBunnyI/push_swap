@@ -13,6 +13,7 @@ FILES = main.c\
 		sort3.c\
 		sort5.c\
 		sort100.c\
+		sort500.c\
 
 VPATH = srcs/\
 		srcs/utils/\
