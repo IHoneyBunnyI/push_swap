@@ -20,6 +20,14 @@ FILES = main.c\
 		sort500.c\
 
 FILES_BONUS = bonus.c\
+			  rules.c\
+			  rules2.c\
+			  utils2.c\
+			  utils.c\
+			  parse_arguments.c\
+			  array_to_list.c\
+			  check_arguments.c\
+			  lists.c\
 
 
 VPATH = srcs/\
@@ -74,3 +82,5 @@ fclean : clean
 	@printf "\033[38;5;84mFULL CLEAN\033[0m\n"
 
 re: fclean all
+
+.PHONY: all bonus clean fclean re

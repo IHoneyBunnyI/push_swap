@@ -47,11 +47,6 @@ typedef struct s_list
 	struct s_list	*n;
 }	t_list;
 
-typedef struct s_malloc
-{
-	void	*memory[NUMBER_MALLOC];
-}	t_malloc;
-
 typedef struct s_stacks
 {
 	t_list	*a;

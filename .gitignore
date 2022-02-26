@@ -5,3 +5,4 @@ a.out
 objs/
 numbers.c
 compile_flags.txt
+checker

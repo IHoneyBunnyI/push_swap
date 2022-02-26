@@ -49,27 +49,19 @@ int	is_sorted(t_stacks *stacks)
 	return (1);
 }
 
-void	init(t_stacks *stacks, t_malloc *malloc)
+void	init(t_stacks *stacks)
 {
-	int	i;
-
-	i = -1;
 	stacks->a = 0;
 	stacks->b = 0;
-	while (++i < NUMBER_MALLOC)
-		malloc->memory[i] = 0;
-	malloc->memory[0] = stacks->a;
-	malloc->memory[1] = stacks->b;
 }
 
 int	main(int ac, char **av)
 {
 	t_stacks	stacks;
-	t_malloc	malloc;
 
 	if (ac == 1)
 		return (fatal("Give me numbers, I will sort!"));
-	init(&stacks, &malloc);
+	init(&stacks);
 	stacks.a = parse_arguments(av);
 	if (stacks.a == (t_list *)ERROR)
 		return (fatal("Error arguments"));
