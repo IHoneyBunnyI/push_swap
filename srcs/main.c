@@ -60,14 +60,14 @@ int	main(int ac, char **av)
 	t_stacks	stacks;
 
 	if (ac == 1)
-		return (fatal("Give me numbers, I will sort!"));
+		return (fatal("Error"));
 	init(&stacks);
 	stacks.a = parse_arguments(av);
 	if (stacks.a == (t_list *)ERROR)
-		return (fatal("Error arguments"));
+		return (fatal("Error"));
 	stacks.size = size_list(stacks.a);
 	if (is_sorted(&stacks))
-		return (fatal("Stack is sorted!"));
+		return (0);
 	if (stacks.size <= 3)
 		sort3(&stacks);
 	if (stacks.size > 3 && stacks.size <= 5)

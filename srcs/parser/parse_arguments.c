@@ -125,8 +125,13 @@ static int	find_duplicates(int *nums, int size)
 	sorted = sort_array(sorted, size);
 	i = 0;
 	while (++i < size)
+	{
 		if (sorted[i - 1] == sorted[i])
+		{
+			free(sorted);
 			return (ERROR);
+		}
+	}
 	free(sorted);
 	return (0);
 }
@@ -142,7 +147,10 @@ t_list	*parse_arguments(char **av)
 	size = num_array(av);
 	numbers = convert_numbers_to_array(av, size);
 	if (find_duplicates(numbers, size) == ERROR)
+	{
+		free(numbers);
 		return ((t_list *)ERROR);
+	}
 	list = array_to_list(numbers, size);
 	free(numbers);
 	return (list);

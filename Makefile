@@ -3,7 +3,7 @@ NAME_BONUS = checker
 
 OBJDIR = objs/
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -Iincludes -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -Iincludes -g #-fsanitize=address
 
 FILES = main.c\
 		utils.c\
@@ -33,6 +33,8 @@ FILES_BONUS = bonus.c\
 			  lists.c\
 			  gnl.c\
 			  gnl_utils.c\
+			  execute_commands_bonus.c\
+			  get_commands.c\
 
 
 VPATH = srcs/\

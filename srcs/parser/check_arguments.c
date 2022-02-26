@@ -104,8 +104,13 @@ int	check_arguments(char **av)
 				return (ERROR);
 			j = -1;
 			while (split[++j])
+			{
 				if (check_str(split[j]) == ERROR)
+				{
+					free_split(split);
 					return (ERROR);
+				}
+			}
 			free_split(split);
 		}
 		else

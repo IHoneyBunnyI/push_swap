@@ -36,11 +36,9 @@
 
 int	fatal(char *s)
 {
-	write(2, RED, ft_strlen(RED));
 	write(2, s, ft_strlen(s));
-	write(2, WHITE, ft_strlen(WHITE));
 	write(2, "\n", 1);
-	return (2);
+	exit(2);
 }
 
 void	free_split(char **split)

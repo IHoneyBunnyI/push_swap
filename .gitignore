@@ -1,4 +1,5 @@
 *.o
+*.dSYM
 push_swap
 a.out
 *.DS_Store
@@ -6,3 +7,4 @@ objs/
 numbers.c
 compile_flags.txt
 checker
+push_swap_tester2/

@@ -29,49 +29,73 @@
 /*                                   */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
-# define ERROR 2
+#include "checker.h"
+#include <stdlib.h>
 
-typedef struct s_list
+int	fill_res(int *res, int i, char *comand)
 {
-	int				data;
-	int				i;
-	struct s_list	*n;
-}	t_list;
+	if (ft_strcmp(comand, "sa") == 0)
+		res[i] = 0;
+	else if (ft_strcmp(comand, "sb") == 0)
+		res[i] = 1;
+	else if (ft_strcmp(comand, "ss") == 0)
+		res[i] = 2;
+	else if (ft_strcmp(comand, "pa") == 0)
+		res[i] = 3;
+	else if (ft_strcmp(comand, "pb") == 0)
+		res[i] = 4;
+	else if (ft_strcmp(comand, "ra") == 0)
+		res[i] = 5;
+	else if (ft_strcmp(comand, "rb") == 0)
+		res[i] = 6;
+	else if (ft_strcmp(comand, "rr") == 0)
+		res[i] = 7;
+	else if (ft_strcmp(comand, "rra") == 0)
+		res[i] = 8;
+	else if (ft_strcmp(comand, "rrb") == 0)
+		res[i] = 9;
+	else if (ft_strcmp(comand, "rrr") == 0)
+		res[i] = 10;
+	else 
+		return (1);
+	return (0);
+}
 
-typedef struct s_stacks
+int	*get_indx_cmd(char **comands, int size)
 {
-	t_list	*a;
-	t_list	*b;
-	int		size;
-}	t_stacks;
+	int	i;
+	int	*res;
 
-typedef void (*rule)(t_stacks *stacks, int w);
+	res = malloc(sizeof(int) * size);
+	if (!res)
+		return (0);
+	i = -1;
+	while (comands[++i])
+		if (fill_res(res, i, comands[i]) != 0)
+			return (0);
+	return (res);
+}
 
-int		size_list(t_list *l);
-int		fatal(char *s);
-t_list	*parse_arguments(char **av);
-int		get_next_line(int fd, char **line);
-char	*ft_strjoin(char *s1, char *s2);
-char	**ft_split(char const *s, char c);
-int		ft_strcmp(char *s1, char *s2);
-int		split_len(char **split);
-void	execute_commands(t_stacks *stacks, int *indx_cmd, int len);
-char	**get_commands(void);
-int		*get_indx_cmd(char **comands, int size);
-void	free_split(char **split);
-void	free_all(char **comands, int *indx_cmd);
-void	sa(t_stacks *stacks, int w);
-void	sb(t_stacks *stacks, int w);
-void	ss(t_stacks *stacks, int w);
-void	pa(t_stacks *stacks, int w);
-void	pb(t_stacks *stacks, int w);
-void	ra(t_stacks *stacks, int w);
-void	rb(t_stacks *stacks, int w);
-void	rr(t_stacks *stacks, int w);
-void	rra(t_stacks *stacks, int w);
-void	rrb(t_stacks *stacks, int w);
-void	rrr(t_stacks *stacks, int w);
+char	**get_commands(void)
+{
+	char	*tmp;
+	char	*line;
+	char	**res;
 
-#endif
+	line = 0;
+	res = 0;
+	tmp = 0;
+	while (get_next_line(0, &tmp))
+	{
+		line = ft_strjoin(line, tmp);
+		line = ft_strjoin(line, " ");
+		free(tmp);
+	}
+	free(tmp);
+	res = ft_split(line, ' ');
+	free(line);
+	if (!res)
+		return (0);
+	return (res);
+}
+
