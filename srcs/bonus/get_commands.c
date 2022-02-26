@@ -56,7 +56,7 @@ int	fill_res(int *res, int i, char *comand)
 		res[i] = 9;
 	else if (ft_strcmp(comand, "rrr") == 0)
 		res[i] = 10;
-	else 
+	else
 		return (1);
 	return (0);
 }
@@ -98,4 +98,3 @@ char	**get_commands(void)
 		return (0);
 	return (res);
 }
-

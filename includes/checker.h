@@ -32,6 +32,7 @@
 #ifndef CHECKER_H
 # define CHECKER_H
 # define ERROR 2
+# define R =
 
 typedef struct s_list
 {
@@ -47,14 +48,16 @@ typedef struct s_stacks
 	int		size;
 }	t_stacks;
 
-typedef void (*rule)(t_stacks *stacks, int w);
+typedef void	(*t_rule)(t_stacks *stacks, int w);
 
 int		size_list(t_list *l);
 int		fatal(char *s);
 t_list	*parse_arguments(char **av);
 int		get_next_line(int fd, char **line);
 char	*ft_strjoin(char *s1, char *s2);
+int		norminette(char *s);
 char	**ft_split(char const *s, char c);
+int		check_str(char *str);
 int		ft_strcmp(char *s1, char *s2);
 int		split_len(char **split);
 void	execute_commands(t_stacks *stacks, int *indx_cmd, int len);

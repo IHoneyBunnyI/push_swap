@@ -56,6 +56,16 @@ void	init(t_stacks *stacks)
 	stacks->b = 0;
 }
 
+int	chek_sort(t_stacks *stacks)
+{
+	if (is_sorted(stacks))
+	{
+		free_list(&stacks->a);
+		return (0);
+	}
+	return (1);
+}
+
 int	main(int ac, char **av)
 {
 	t_stacks	stacks;
@@ -66,25 +76,21 @@ int	main(int ac, char **av)
 	if (ac == 1)
 		return (fatal("Error"));
 	init(&stacks);
-	stacks.a = parse_arguments(av);
-	if (stacks.a == (t_list *)ERROR)
+	if ((stacks.a R parse_arguments(av)) == (t_list *)ERROR)
 		return (fatal("Error"));
 	stacks.size = size_list(stacks.a);
-	if (is_sorted(&stacks))
-	{
-		free_list(&stacks.a);
+	if (chek_sort(&stacks) == 0)
 		return (0);
-	}
-	comands = get_commands();
-	if (comands == 0)
-		return (fatal("Error"));
-	indx_cmd = get_indx_cmd(comands, split_len(comands));
-	if (indx_cmd == 0)
+	if ((comands R get_commands()) == 0 || \
+	(indx_cmd R get_indx_cmd(comands, split_len(comands))) == 0)
 		return (fatal("Error"));
 	execute_commands(&stacks, indx_cmd, split_len(comands));
 	free_all(comands, indx_cmd);
 	if (is_sorted(&stacks))
+	{
+		free_list(&stacks.a);
 		return (fatal("OK"));
+	}
 	free_list(&stacks.a);
 	return (fatal("KO"));
 }

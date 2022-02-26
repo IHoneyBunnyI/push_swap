@@ -10,6 +10,7 @@ FILES = main.c\
 		utils2.c\
 		parse_arguments.c\
 		check_arguments.c\
+		norminette.c\
 		util_bonus.c\
 		lists.c\
 		array_to_list.c\
@@ -27,6 +28,7 @@ FILES_BONUS = bonus.c\
 			  rules2.c\
 			  rules3.c\
 			  utils2.c\
+			  norminette.c\
 			  utils.c\
 			  parse_arguments.c\
 			  array_to_list.c\
