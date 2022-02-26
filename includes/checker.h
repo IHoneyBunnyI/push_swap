@@ -62,6 +62,7 @@ char	**get_commands(void);
 int		*get_indx_cmd(char **comands, int size);
 void	free_split(char **split);
 void	free_all(char **comands, int *indx_cmd);
+void	free_list(t_list **lst);
 void	sa(t_stacks *stacks, int w);
 void	sb(t_stacks *stacks, int w);
 void	ss(t_stacks *stacks, int w);

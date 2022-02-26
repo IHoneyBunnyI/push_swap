@@ -71,7 +71,10 @@ int	main(int ac, char **av)
 		return (fatal("Error"));
 	stacks.size = size_list(stacks.a);
 	if (is_sorted(&stacks))
+	{
+		free_list(&stacks.a);
 		return (0);
+	}
 	comands = get_commands();
 	if (comands == 0)
 		return (fatal("Error"));
@@ -82,5 +85,6 @@ int	main(int ac, char **av)
 	free_all(comands, indx_cmd);
 	if (is_sorted(&stacks))
 		return (fatal("OK"));
+	free_list(&stacks.a);
 	return (fatal("KO"));
 }
