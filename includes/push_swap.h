@@ -60,6 +60,7 @@ t_list	*parse_arguments(char **av);
 char	**ft_split(char const *s, char c);
 int		check_arguments(char **av);
 void	free_split(char **split);
+void	free_list(t_list **lst);
 int		ft_atoi(char *str);
 int		find_space(char *str);
 t_list	*array_to_list(int *numbers, int size);

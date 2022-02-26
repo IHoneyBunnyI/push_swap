@@ -67,7 +67,10 @@ int	main(int ac, char **av)
 		return (fatal("Error"));
 	stacks.size = size_list(stacks.a);
 	if (is_sorted(&stacks))
+	{
+		free_list(&stacks.a);
 		return (0);
+	}
 	if (stacks.size <= 3)
 		sort3(&stacks);
 	if (stacks.size > 3 && stacks.size <= 5)
@@ -76,5 +79,6 @@ int	main(int ac, char **av)
 		sort100(&stacks);
 	if (stacks.size > 100)
 		sort500(&stacks);
+	free_list(&stacks.a);
 	return (0);
 }

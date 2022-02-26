@@ -10,6 +10,7 @@ FILES = main.c\
 		utils2.c\
 		parse_arguments.c\
 		check_arguments.c\
+		util_bonus.c\
 		lists.c\
 		array_to_list.c\
 		rules.c\
